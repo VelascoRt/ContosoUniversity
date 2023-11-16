@@ -23,5 +23,9 @@ public class SchoolContext : DbContext
             .WithMany(i => i.Courses);
         modelBuilder.Entity<Student>().ToTable(nameof(Student));
         modelBuilder.Entity<Instructor>().ToTable(nameof(Instructor));
+        
+        modelBuilder.Entity<Department>()
+            .Property(d => d.ConcurrencyToken)
+            .IsConcurrencyToken();
     }
 }
